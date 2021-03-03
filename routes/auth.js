@@ -4,7 +4,7 @@ const route = express.Router()
 
 route.get('/', (req,res)=>{console.log("login")})
 
-route.get('/google',passport.authenticate('google', { scope : ['profile']}))
+route.get('/google',passport.authenticate('google', { scope : ['email','profile']}))
 
 route.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }),
     (req,res) =>{
