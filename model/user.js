@@ -20,7 +20,6 @@ const UserSchema = new Schema({
   },
   lastname: {
     type: String,
-    required: true
   },
   imgurl: {
     type: String,

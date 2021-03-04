@@ -1,8 +1,9 @@
 const express = require('express')
 const passport = require('passport')
 const route = express.Router()
+const {ensureGuest} = require('../middleware/auth')
 
-route.get('/', (req,res)=>{console.log("login")})
+route.get('/', ensureGuest, (req,res)=>{res.render('login')})
 
 route.get('/google',passport.authenticate('google', { scope : ['email','profile']}))
 

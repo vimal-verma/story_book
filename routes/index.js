@@ -1,13 +1,14 @@
 const express = require('express')
 const route = express.Router()
+const {ensureAuth, ensureGuest} = require('../middleware/auth')
 
-route.get('/', (req,res)=>{console.log("main page")})
+route.get('/', ensureGuest ,(req,res)=>{res.render('index')})
 
-route.get('/home', (req,res)=>{console.log("home")})
+route.get('/home', ensureAuth, (req,res)=>{res.render('home')})
 
-route.get('/login', (req,res)=>{console.log("login")})
+route.get('/about', (req,res)=>{res.render('about')})
 
-route.get('/dashboard', (req,res)=>{console.log("login")})
+route.get('/support', ensureAuth, (req,res)=>{res.render('about')})
 
 
 
