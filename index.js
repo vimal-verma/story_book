@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport')
 const session = require('express-session')
+const bodyParser = require('body-parser')
 require('dotenv').config()
 require('./config/passport')(passport)
 
@@ -17,6 +18,12 @@ const port = process.env.PORT || 5000
 app.set('view engine', 'ejs');
 app.use(express.static('public'))
 
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json());
 
 
 // session 
@@ -35,5 +42,6 @@ app.use(passport.session())
 
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
+app.use('/story', require('./routes/story'))
 
 app.listen(port, console.log(`app is running on port ${port}, go to http://localhost:${port}`))
