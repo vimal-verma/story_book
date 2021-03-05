@@ -4,7 +4,10 @@ const {ensureAuth} = require('../middleware/auth')
 const Story = require('../model/story')
 
 
-route.get('/add', ensureAuth ,(req,res)=>{res.render('story')})
+route.get('/add', ensureAuth ,(req,res)=>{
+    const auth = req.user ? true : false
+    res.render('story',{auth})
+})
 
 route.post('/add', ensureAuth,(req,res)=>{
     const story = new Story({

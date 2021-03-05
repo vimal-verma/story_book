@@ -7,7 +7,8 @@ route.get('/' , async (req,res)=>{
     try {
         const story = await Story.find({status: 'public'})
         .populate('user')
-        res.render('index',{story})
+        const auth = req.user ? true : false
+        res.render('index',{story, auth})
     } catch (error) {
         console.log(error)
     }
@@ -16,15 +17,18 @@ route.get('/' , async (req,res)=>{
 route.get('/home', ensureAuth, async (req,res)=>{
     try {
         const story = await Story.find({user: req.user.id})
-        res.render('home',{story})
+        const auth = req.user ? true : false
+        res.render('home',{story, auth})
     } catch (error) {
         console.log(error)
     }
 })
 
-route.get('/about', (req,res)=>{res.render('about')})
+route.get('/about', (req,res)=>{
+    const auth = req.user ? true : false
+    res.render('about',{auth})
+})
 
-route.get('/support', ensureAuth, (req,res)=>{res.render('about')})
 
 
 
