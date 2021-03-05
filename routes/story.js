@@ -11,7 +11,7 @@ route.post('/add', ensureAuth,(req,res)=>{
         user: req.user.id,
         title : req.body.title,
         body : req.body.body,
-        status : 'public'
+        status : req.body.status
 
     })
     story.save()

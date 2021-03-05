@@ -15,7 +15,6 @@ const StorySchema = new Schema({
   status: {
     type: String,
     required: true,
-    default : 'public',
     enum: ['public', 'private']
   },
   user: {

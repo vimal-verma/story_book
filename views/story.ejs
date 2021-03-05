@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>  
-    <form action="/story/add" method="POST">
-        <input type="text" name="title">
-        <input type="text" name="body">
-        <button type="submit">submit</button>
-    </form>
+    <%- include('components/head.ejs'); -%>
+  <body>  
+      <div class="container">
+      <%- include('components/header.ejs'); -%>
+        <form action="/story/add" method="POST">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Name</label>
+                <input type="name" class="form-control" id="exampleFormControlInput1" name="title" placeholder="name">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Story</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" type="text" name="body" rows="5"></textarea>
+              </div>
+            <select name="status" id="status">
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+              </select>
+            <button type="submit">submit</button>
+        </form>
+    </div>
+
+<%- include('components/footer.ejs'); -%>
 </body>
 </html>
