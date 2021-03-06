@@ -5,15 +5,17 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+        <div style="width: 100%;" class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="/home">Dashboard</a>
           <a class="nav-link" href="/about">About</a>
           <% if(!auth) { %>
-          <a class="nav-link" href="/auth">login</a>
+          <a class="nav-link" style="margin-left: auto;" href="/auth">login</a>
           <a class="nav-link" href="/auth">register</a>
           <% }else{ %> 
           <a class="nav-link" href="/auth/Logout">Logout</a>
           <a class="nav-link" href="/story/add">add story</a>
+          <img style="width: 40px; border-radius: 30px; margin-left: auto;" src="<%= auth.imgurl %>" alt="<%= auth.displayName %>">
+          <H6 style="margin-top: auto;"><%= auth.displayName %> </H6>
           <% } %> 
         </div>
       </div>

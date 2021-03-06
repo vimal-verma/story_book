@@ -4,9 +4,9 @@
 <body>
     <div class="container">
     <%- include('components/header.ejs'); -%>
-    <h1>Story-book</h1>
+    <h1>My Story</h1>
     <% story.forEach(story => { %>
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-3">
             <div class="card-body">
               <h5 class="card-title"><%= story.title %> </h5>
               <p class="card-text"><%= story.body %> </p>
